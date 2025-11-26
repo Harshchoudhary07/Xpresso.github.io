@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for Xpresso">
+    <title>Sign Up - Xpresso</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="Xpresso" class="logo-icon"
+                        style="width: 40px; height: 40px; object-fit: contain;">
+                    <span class="logo-text">Xpresso</span>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="browse.html" class="nav-link">Browse</a></li>
+                    <li><a href="dashboard.html" class="nav-link">My Rentals</a></li>
+                    <li><a href="policies.html" class="nav-link">Policies</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="login.html" class="btn btn-primary">Login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="list-vehicle-page">
+        <div class="container">
+            <div class="form-container" style="max-width: 500px;">
+                <h1 class="text-center">Sign Up</h1>
+                <p class="text-light text-center mb-4">Join Xpresso today</p>
+
+                <form id="signup-form" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" class="form-input"
+                            placeholder="your.email@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="9876543210" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password *</label>
+                        <input type="password" id="password" name="password" class="form-input"
+                            placeholder="Create a strong password" required oninput="checkPasswordStrength()">
+                        <div id="password-strength" class="mt-2" style="display: none;">
+                            <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                                <div id="strength-bar-1"
+                                    style="height: 4px; flex: 1; background: #E3E4E8; border-radius: 2px;"></div>
+                                <div id="strength-bar-2"
+                                    style="height: 4px; flex: 1; background: #E3E4E8; border-radius: 2px;"></div>
+                                <div id="strength-bar-3"
+                                    style="height: 4px; flex: 1; background: #E3E4E8; border-radius: 2px;"></div>
+                            </div>
+                            <p id="strength-text" class="text-small"></p>
+                        </div>
+                        <div class="mt-2" style="font-size: 13px; color: var(--color-text-light);">
+                            <p style="margin-bottom: 4px;"><strong>Password must contain:</strong></p>
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li id="check-length">At least 8 characters</li>
+                                <li id="check-uppercase">One uppercase letter (A-Z)</li>
+                                <li id="check-lowercase">One lowercase letter (a-z)</li>
+                                <li id="check-number">One number (0-9)</li>
+                                <li id="check-special">One special character (!@#$%^&*)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="confirm-password">Confirm Password *</label>
+                        <input type="password" id="confirm-password" name="confirm-password" class="form-input"
+                            placeholder="Re-enter your password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="role">I want to *</label>
+                        <select id="role" name="role" class="form-select" required>
+                            <option value="">Select an option</option>
+                            <option value="renter">Rent vehicles</option>
+                            <option value="owner">List my vehicle</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="agree-terms" required>
+                        <label for="agree-terms">I agree to the <a href="policies.html">Terms & Policies</a></label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg mt-3">
+                        Create Account
+                    </button>
+                </form>
+
+                <p class="text-center mt-3">
+                    Already have an account? <a href="login.html">Login</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Xpresso</h3>
+                    <p>Affordable vehicle rentals for students in Vadodara</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="browse.html">Browse Vehicles</a></li>
+                        <li><a href="list-vehicle.html">List Your Vehicle</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="policies.html">Terms & Conditions</a></li>
+                        <li><a href="policies.html">Privacy Policy</a></li>
+                        <li><a href="mailto:support@Xpresso.com">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Xpresso. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthDiv = document.getElementById('password-strength');
+            const strengthText = document.getElementById('strength-text');
+
+            if (!password) {
+                strengthDiv.style.display = 'none';
+                return;
+            }
+
+            strengthDiv.style.display = 'block';
+            const result = Utils.validatePasswordStrength(password);
+
+            // Update strength bars
+            const bars = [
+                document.getElementById('strength-bar-1'),
+                document.getElementById('strength-bar-2'),
+                document.getElementById('strength-bar-3')
+            ];
+
+            bars.forEach(bar => bar.style.background = '#E3E4E8');
+
+            if (result.strength === 'weak') {
+                bars[0].style.background = '#DC3545';
+                strengthText.innerHTML = '<span style="color: #DC3545;">Weak password</span>';
+            } else if (result.strength === 'medium') {
+                bars[0].style.background = '#F8D775';
+                bars[1].style.background = '#F8D775';
+                strengthText.innerHTML = '<span style="color: #d97706;">Medium password</span>';
+            } else {
+                bars[0].style.background = '#27AE60';
+                bars[1].style.background = '#27AE60';
+                bars[2].style.background = '#27AE60';
+                strengthText.innerHTML = '<span style="color: #27AE60;">Strong password ✓</span>';
+            }
+
+            // Update checklist
+            const checks = result.checks;
+            document.getElementById('check-length').style.color = checks.length ? '#27AE60' : '';
+            document.getElementById('check-uppercase').style.color = checks.uppercase ? '#27AE60' : '';
+            document.getElementById('check-lowercase').style.color = checks.lowercase ? '#27AE60' : '';
+            document.getElementById('check-number').style.color = checks.number ? '#27AE60' : '';
+            document.getElementById('check-special').style.color = checks.special ? '#27AE60' : '';
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const role = document.getElementById('role').value;
+
+            if (!Utils.validateEmail(email)) {
+                Utils.showToast('Invalid email address', 'error');
+                return;
+            }
+
+            if (!Utils.validatePhone(phone)) {
+                Utils.showToast('Invalid phone number', 'error');
+                return;
+            }
+
+            // Validate password strength
+            const passwordCheck = Utils.validatePasswordStrength(password);
+            if (!passwordCheck.valid) {
+                Utils.showToast('Password does not meet requirements. Please use a stronger password.', 'error');
+                return;
+            }
+
+            // Check password confirmation
+            if (password !== confirmPassword) {
+                Utils.showToast('Passwords do not match', 'error');
+                document.getElementById('confirm-password').classList.add('error');
+                return;
+            }
+
+            const userData = { name, email, phone, role };
+            Auth.signup(userData, password);
+        }
+    </script>
+</body>
+
+</html>

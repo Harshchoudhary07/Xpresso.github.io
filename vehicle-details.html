@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vehicle details and booking">
+    <title>Vehicle Details - Xpresso</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🏍️</span>
+                    <span class="logo-text">Xpresso</span>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="browse.html" class="nav-link">Browse</a></li>
+                    <li><a href="dashboard.html" class="nav-link">My Rentals</a></li>`n                    <li><a href="policies.html" class="nav-link">Policies</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="list-vehicle.html" class="btn btn-secondary">List Your Vehicle</a>
+                    <a href="login.html" class="btn btn-primary">Login</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="vehicle-details-page">
+        <div class="container">
+            <a href="browse.html" class="back-link">← Back to Browse</a>
+
+            <div class="vehicle-details-layout">
+                <!-- Left Column: Images & Details -->
+                <div class="vehicle-main">
+                    <!-- Image Gallery -->
+                    <div class="vehicle-gallery">
+                        <img id="main-image" src="" alt="Vehicle" class="gallery-main">
+                        <div class="gallery-thumbnails" id="thumbnails">
+                            <!-- Thumbnails will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Info -->
+                    <div class="vehicle-info-section">
+                        <div class="vehicle-header-detail">
+                            <div>
+                                <h1 id="vehicle-name">Loading...</h1>
+                                <p class="text-light" id="vehicle-location">📍 Loading...</p>
+                            </div>
+                            <div class="vehicle-rating">
+                                <span class="rating-value" id="vehicle-rating">⭐ -</span>
+                            </div>
+                        </div>
+
+                        <div class="vehicle-specs">
+                            <div class="spec-item">
+                                <span class="spec-label">Type</span>
+                                <span class="spec-value" id="spec-type">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Brand</span>
+                                <span class="spec-value" id="spec-brand">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Model</span>
+                                <span class="spec-value" id="spec-model">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Year</span>
+                                <span class="spec-value" id="spec-year">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Gear Type</span>
+                                <span class="spec-value" id="spec-gear">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Fuel Type</span>
+                                <span class="spec-value" id="spec-fuel">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Mileage</span>
+                                <span class="spec-value" id="spec-mileage">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Registration</span>
+                                <span class="spec-value" id="spec-registration">-</span>
+                            </div>
+                        </div>
+
+                        <div class="vehicle-description">
+                            <h3>Description</h3>
+                            <p id="vehicle-description">Loading...</p>
+                        </div>
+
+                        <div class="vehicle-rules">
+                            <h3>Rules</h3>
+                            <ul id="vehicle-rules">
+                                <!-- Rules will be loaded here -->
+                            </ul>
+                        </div>
+
+                        <div class="owner-info">
+                            <h3>Owner Information</h3>
+                            <div class="owner-card">
+                                <div class="owner-avatar">👤</div>
+                                <div>
+                                    <h4 id="owner-name">Loading...</h4>
+                                    <p class="text-small text-light">Verified Owner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Booking Card -->
+                <div class="booking-sidebar">
+                    <div class="booking-card">
+                        <div class="booking-price">
+                            <div>
+                                <span class="price-amount" id="price-hour">₹-</span>
+                                <span class="price-unit">/hour</span>
+                            </div>
+                            <div>
+                                <span class="price-amount" id="price-day">₹-</span>
+                                <span class="price-unit">/day</span>
+                            </div>
+                        </div>
+
+                        <div class="booking-form">
+                            <div class="form-group">
+                                <label class="form-label">Pickup Date & Time</label>
+                                <input type="datetime-local" id="pickup-time" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Return Date & Time</label>
+                                <input type="datetime-local" id="return-time" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Rental Duration</label>
+                                <select id="duration-type" class="form-select">
+                                    <option value="hourly">Hourly</option>
+                                    <option value="daily">Daily</option>
+                                </select>
+                            </div>
+
+                            <div class="cost-breakdown">
+                                <h4>Cost Breakdown</h4>
+                                <div class="cost-item">
+                                    <span>Rental Cost</span>
+                                    <span id="rental-cost">₹0</span>
+                                </div>
+                                <div class="cost-item">
+                                    <span>Security Deposit</span>
+                                    <span id="deposit-cost">₹0</span>
+                                </div>
+                                <div class="cost-item total">
+                                    <span><strong>Total</strong></span>
+                                    <span id="total-cost"><strong>₹0</strong></span>
+                                </div>
+                                <p class="text-small text-light mt-2">*Deposit will be refunded after return</p>
+                            </div>
+
+                            <button class="btn btn-primary btn-block btn-lg" onclick="bookVehicle()">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Xpresso</h3>
+                    <p>Affordable vehicle rentals for students in Vadodara</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="browse.html">Browse Vehicles</a></li>
+                        <li><a href="list-vehicle.html">List Your Vehicle</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="policies.html">Terms & Conditions</a></li>
+                        <li><a href="policies.html">Privacy Policy</a></li>
+                        <li><a href="mailto:support@Xpresso.com">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Xpresso. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        let currentVehicle = null;
+
+        // Get vehicle ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const vehicleId = urlParams.get('id');
+
+        // Load vehicle data
+        function loadVehicle() {
+            if (!vehicleId) {
+                window.location.href = 'browse.html';
+                return;
+            }
+
+            currentVehicle = MockData.vehicles.find(v => v.id === vehicleId);
+
+            if (!currentVehicle) {
+                Utils.showToast('Vehicle not found', 'error');
+                setTimeout(() => window.location.href = 'browse.html', 2000);
+                return;
+            }
+
+            // Update page content
+            document.getElementById('vehicle-name').textContent = currentVehicle.name;
+            document.getElementById('vehicle-location').textContent = `📍 ${currentVehicle.location} • ${currentVehicle.distance}`;
+            document.getElementById('vehicle-rating').textContent = `⭐ ${currentVehicle.rating}`;
+            document.getElementById('vehicle-description').textContent = currentVehicle.description;
+
+            // Specs
+            document.getElementById('spec-type').textContent = currentVehicle.type;
+            document.getElementById('spec-brand').textContent = currentVehicle.brand;
+            document.getElementById('spec-model').textContent = currentVehicle.model;
+            document.getElementById('spec-year').textContent = currentVehicle.year;
+            document.getElementById('spec-gear').textContent = currentVehicle.gearType;
+            document.getElementById('spec-fuel').textContent = currentVehicle.fuelType;
+            document.getElementById('spec-mileage').textContent = currentVehicle.mileage;
+            document.getElementById('spec-registration').textContent = currentVehicle.registration;
+
+            // Pricing
+            document.getElementById('price-hour').textContent = `₹${currentVehicle.pricePerHour}`;
+            document.getElementById('price-day').textContent = `₹${currentVehicle.pricePerDay}`;
+            document.getElementById('deposit-cost').textContent = `₹${currentVehicle.deposit}`;
+
+            // Owner
+            document.getElementById('owner-name').textContent = currentVehicle.ownerName;
+
+            // Rules
+            const rulesList = document.getElementById('vehicle-rules');
+            rulesList.innerHTML = currentVehicle.rules.map(rule => `<li>${rule}</li>`).join('');
+
+            // Images
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = currentVehicle.images[0];
+
+            const thumbnails = document.getElementById('thumbnails');
+            thumbnails.innerHTML = currentVehicle.images.map((img, index) => `
+                <img src="${img}" alt="Thumbnail ${index + 1}" class="gallery-thumbnail ${index === 0 ? 'active' : ''}" onclick="changeImage('${img}', ${index})">
+            `).join('');
+
+            // Set default dates
+            const now = new Date();
+            now.setHours(now.getHours() + 1);
+            document.getElementById('pickup-time').value = now.toISOString().slice(0, 16);
+
+            const returnTime = new Date(now);
+            returnTime.setHours(returnTime.getHours() + 4);
+            document.getElementById('return-time').value = returnTime.toISOString().slice(0, 16);
+
+            calculateCost();
+        }
+
+        function changeImage(src, index) {
+            document.getElementById('main-image').src = src;
+            document.querySelectorAll('.gallery-thumbnail').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        function calculateCost() {
+            const pickupTime = new Date(document.getElementById('pickup-time').value);
+            const returnTime = new Date(document.getElementById('return-time').value);
+            const durationType = document.getElementById('duration-type').value;
+
+            if (!pickupTime || !returnTime || returnTime <= pickupTime) {
+                document.getElementById('rental-cost').textContent = '₹0';
+                document.getElementById('total-cost').textContent = '₹0';
+                return;
+            }
+
+            const hours = (returnTime - pickupTime) / (1000 * 60 * 60);
+            let rentalCost = 0;
+
+            if (durationType === 'hourly') {
+                rentalCost = Math.ceil(hours) * currentVehicle.pricePerHour;
+            } else {
+                const days = Math.ceil(hours / 24);
+                rentalCost = days * currentVehicle.pricePerDay;
+            }
+
+            const total = rentalCost + currentVehicle.deposit;
+
+            document.getElementById('rental-cost').textContent = `₹${rentalCost}`;
+            document.getElementById('total-cost').textContent = `₹${total}`;
+        }
+
+        function bookVehicle() {
+            const user = Auth.getCurrentUser();
+
+            if (!user) {
+                Utils.showToast('Please login to book a vehicle', 'error');
+                setTimeout(() => window.location.href = 'login.html', 1500);
+                return;
+            }
+
+            if (!user.verified) {
+                Utils.showToast('Please complete verification first', 'error');
+                setTimeout(() => window.location.href = 'verification.html', 1500);
+                return;
+            }
+
+            const pickupTime = document.getElementById('pickup-time').value;
+            const returnTime = document.getElementById('return-time').value;
+
+            if (!pickupTime || !returnTime) {
+                Utils.showToast('Please select pickup and return times', 'error');
+                return;
+            }
+
+            Utils.showToast('Booking successful! Redirecting to dashboard...', 'success');
+            setTimeout(() => window.location.href = 'dashboard.html', 2000);
+        }
+
+        // Event listeners
+        document.getElementById('pickup-time').addEventListener('change', calculateCost);
+        document.getElementById('return-time').addEventListener('change', calculateCost);
+        document.getElementById('duration-type').addEventListener('change', calculateCost);
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Load vehicle on page load
+        loadVehicle();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete KYC verification for Xpresso">
+    <title>Verification - Xpresso</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">🏍️</span>
+                    <span class="logo-text">Xpresso</span>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="browse.html" class="nav-link">Browse</a></li>
+                    <li><a href="dashboard.html" class="nav-link">My Rentals</a></li>`n <li><a href="policies.html"
+                            class="nav-link">Policies</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="list-vehicle-page">
+        <div class="container">
+            <div class="form-container wide">
+                <h1>Verification & KYC</h1>
+                <p class="text-light mb-4">Complete verification to start renting or listing vehicles</p>
+
+                <!-- Progress Steps -->
+                <div class="form-steps">
+                    <div class="form-step active">
+                        <div class="step-circle">1</div>
+                        <span class="step-label">Basic Details</span>
+                    </div>
+                    <div class="form-step">
+                        <div class="step-circle">2</div>
+                        <span class="step-label">ID Upload</span>
+                    </div>
+                    <div class="form-step">
+                        <div class="step-circle">3</div>
+                        <span class="step-label">Selfie</span>
+                    </div>
+                    <div class="form-step">
+                        <div class="step-circle">4</div>
+                        <span class="step-label">Done</span>
+                    </div>
+                </div>
+
+                <!-- Step Content -->
+                <div class="form-content">
+                    <!-- Step 1: Basic Details -->
+                    <div class="step-content active" id="step-1">
+                        <h2>Basic Details</h2>
+                        <p class="text-light mb-3">Confirm your information</p>
+
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-input" placeholder="As per college ID" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="college">College/University *</label>
+                            <select id="college" class="form-select" required>
+                                <option value="">Select your college</option>
+                                <option value="Parul University">Parul University</option>
+                                <option value="Sumandeep Vidyapeeth">Sumandeep Vidyapeeth</option>
+                                <option value="MSU (Maharaja Sayajirao University)">MSU (Maharaja Sayajirao University)
+                                </option>
+                                <option value="Parul Institute of Technology">Parul Institute of Technology</option>
+                                <option value="Faculty of Technology & Engineering (MSU)">Faculty of Technology &
+                                    Engineering (MSU)</option>
+                                <option value="Government Engineering College Vadodara">Government Engineering College
+                                    Vadodara</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="hostel">Hostel/Residence *</label>
+                            <input type="text" id="hostel" class="form-input" placeholder="e.g., Parul Hostel" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="9876543210" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-input" placeholder="your.email@example.com"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: ID Upload -->
+                    <div class="step-content" id="step-2">
+                        <h2>Upload ID Documents</h2>
+                        <p class="text-light mb-4">Upload clear photos of your college ID and government ID</p>
+
+                        <div class="form-group">
+                            <label class="form-label">College ID (Front) *</label>
+                            <div class="upload-area" onclick="document.getElementById('college-id-front').click()">
+                                <p style="font-size: 48px; margin: 0;">🎓</p>
+                                <p>Upload College ID (Front)</p>
+                                <p class="text-small text-light">Click to upload</p>
+                            </div>
+                            <input type="file" id="college-id-front" accept="image/*" style="display: none;">
+                            <img id="preview-front"
+                                style="display: none; max-width: 100%; max-height: 200px; margin-top: 10px; border-radius: 8px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">College ID (Back) *</label>
+                            <div class="upload-area" onclick="document.getElementById('college-id-back').click()">
+                                <p style="font-size: 48px; margin: 0;">🎓</p>
+                                <p>Upload College ID (Back)</p>
+                                <p class="text-small text-light">Click to upload</p>
+                            </div>
+                            <input type="file" id="college-id-back" accept="image/*" style="display: none;">
+                            <img id="preview-back"
+                                style="display: none; max-width: 100%; max-height: 200px; margin-top: 10px; border-radius: 8px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Government ID (Aadhaar/Driver's License) *</label>
+                            <div class="upload-area" onclick="document.getElementById('govt-id').click()">
+                                <p style="font-size: 48px; margin: 0;">🆔</p>
+                                <p>Upload Government ID</p>
+                                <p class="text-small text-light">Click to upload</p>
+                            </div>
+                            <input type="file" id="govt-id" accept="image/*" style="display: none;">
+                            <img id="preview-govt"
+                                style="display: none; max-width: 100%; max-height: 200px; margin-top: 10px; border-radius: 8px;">
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Selfie -->
+                    <div class="step-content" id="step-3">
+                        <h2>Take a Selfie</h2>
+                        <p class="text-light mb-4">Take a clear selfie for identity verification</p>
+
+                        <div class="form-group">
+                            <div class="upload-area" onclick="document.getElementById('selfie').click()">
+                                <p style="font-size: 64px; margin: 0;">🤳</p>
+                                <p><strong>Take a Selfie</strong></p>
+                                <p class="text-small text-light">Make sure your face is clearly visible</p>
+                            </div>
+                            <input type="file" id="selfie" accept="image/*" capture="user" style="display: none;">
+                            <img id="preview-selfie"
+                                style="display: none; max-width: 100%; max-height: 300px; margin-top: 10px; border-radius: 8px;">
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Completion -->
+                    <div class="step-content" id="step-4">
+                        <div class="text-center">
+                            <div style="font-size: 80px; margin-bottom: 20px;">✅</div>
+                            <h2>Verification Submitted!</h2>
+                            <p class="text-light mb-4">Your documents are under review. You'll receive an email/SMS once
+                                verified.</p>
+
+                            <div class="alert alert-info text-left">
+                                <strong>What happens next?</strong>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Our team will review your documents</li>
+                                    <li>Verification usually takes 1-2 business days</li>
+                                    <li>You'll be notified via email and SMS</li>
+                                    <li>Once verified, you can start renting or listing</li>
+                                </ul>
+                            </div>
+
+                            <a href="dashboard.html" class="btn btn-primary btn-lg mt-4">
+                                Go to Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="form-actions" id="form-actions">
+                    <button class="btn btn-secondary" id="prev-btn" onclick="previousStep()"
+                        style="visibility: hidden;">
+                        ← Previous
+                    </button>
+                    <button class="btn btn-primary" id="next-btn" onclick="nextStep()">
+                        Next →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Xpresso</h3>
+                    <p>Affordable vehicle rentals for students in Vadodara</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="browse.html">Browse Vehicles</a></li>
+                        <li><a href="list-vehicle.html">List Your Vehicle</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="policies.html">Terms & Conditions</a></li>
+                        <li><a href="policies.html">Privacy Policy</a></li>
+                        <li><a href="mailto:support@Xpresso.com">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Xpresso. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/data.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        const formData = {
+            collegeIdFront: null,
+            collegeIdBack: null,
+            govtId: null,
+            selfie: null
+        };
+
+        // Pre-fill user data from signup
+        window.addEventListener('DOMContentLoaded', function () {
+            const user = Auth.getCurrentUser();
+            if (user) {
+                document.getElementById('name').value = user.name || '';
+                document.getElementById('phone').value = user.phone || '';
+                document.getElementById('email').value = user.email || '';
+            }
+        });
+
+        // Image upload handlers
+        document.getElementById('college-id-front').addEventListener('change', function (e) {
+            handleImageUpload(e, 'collegeIdFront', 'preview-front');
+        });
+
+        document.getElementById('college-id-back').addEventListener('change', function (e) {
+            handleImageUpload(e, 'collegeIdBack', 'preview-back');
+        });
+
+        document.getElementById('govt-id').addEventListener('change', function (e) {
+            handleImageUpload(e, 'govtId', 'preview-govt');
+        });
+
+        document.getElementById('selfie').addEventListener('change', function (e) {
+            handleImageUpload(e, 'selfie', 'preview-selfie');
+        });
+
+        function handleImageUpload(event, field, previewId) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.size > 8 * 1024 * 1024) {
+                Utils.showToast('File too large (max 8MB)', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                formData[field] = e.target.result;
+                const preview = document.getElementById(previewId);
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function nextStep() {
+            if (!validateCurrentStep()) return;
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepDisplay();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepDisplay();
+            }
+        }
+
+        function validateCurrentStep() {
+            switch (currentStep) {
+                case 1:
+                    const name = document.getElementById('name').value;
+                    const college = document.getElementById('college').value;
+                    const phone = document.getElementById('phone').value;
+                    const email = document.getElementById('email').value;
+
+                    if (!name || !college || !phone || !email) {
+                        Utils.showToast('Please fill all required fields', 'error');
+                        return false;
+                    }
+
+                    if (!Utils.validatePhone(phone)) {
+                        Utils.showToast('Invalid phone number', 'error');
+                        return false;
+                    }
+
+                    if (!Utils.validateEmail(email)) {
+                        Utils.showToast('Invalid email address', 'error');
+                        return false;
+                    }
+                    return true;
+
+                case 2:
+                    if (!formData.collegeIdFront || !formData.collegeIdBack || !formData.govtId) {
+                        Utils.showToast('Please upload all required documents', 'error');
+                        return false;
+                    }
+                    return true;
+
+                case 3:
+                    if (!formData.selfie) {
+                        Utils.showToast('Please take a selfie', 'error');
+                        return false;
+                    }
+
+                    // Mark user as verified (in real app, this would wait for admin approval)
+                    Auth.verifyUser();
+                    Utils.showToast('Verification submitted successfully!', 'success');
+                    return true;
+
+                default:
+                    return true;
+            }
+        }
+
+        function updateStepDisplay() {
+            // Update step indicators
+            document.querySelectorAll('.form-step').forEach((step, index) => {
+                if (index + 1 < currentStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                    step.querySelector('.step-circle').textContent = '✓';
+                } else if (index + 1 === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                    step.querySelector('.step-circle').textContent = index + 1;
+                } else {
+                    step.classList.remove('active', 'completed');
+                    step.querySelector('.step-circle').textContent = index + 1;
+                }
+            });
+
+            // Update step content
+            document.querySelectorAll('.step-content').forEach((content, index) => {
+                content.classList.toggle('active', index + 1 === currentStep);
+            });
+
+            // Update buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const formActions = document.getElementById('form-actions');
+
+            if (currentStep === 1) {
+                prevBtn.style.visibility = 'hidden';
+            } else {
+                prevBtn.style.visibility = 'visible';
+            }
+
+            if (currentStep === totalSteps) {
+                formActions.style.display = 'none';
+            } else {
+                formActions.style.display = 'flex';
+                nextBtn.textContent = currentStep === totalSteps - 1 ? 'Submit for Review' : 'Next →';
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>

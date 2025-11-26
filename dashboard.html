@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your Xpresso Dashboard">
+    <title>Dashboard - Xpresso</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="Xpresso" class="logo-icon"
+                        style="width: 40px; height: 40px; object-fit: contain;">
+                    <span class="logo-text">Xpresso</span>
+                </a>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="browse.html" class="nav-link">Browse</a></li>
+                    <li><a href="dashboard.html" class="nav-link active">My Rentals</a></li>
+                    <li><a href="policies.html" class="nav-link">Policies</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+                    <button class="btn btn-primary" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-page">
+        <div class="container">
+            <div class="dashboard-header">
+                <div>
+                    <h1>My Dashboard</h1>
+                    <p class="text-light">Welcome back, <span id="user-name">User</span>!</p>
+                </div>
+                <a href="list-vehicle.html" class="btn btn-primary">List New Vehicle</a>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('rentals')">My Rentals</button>
+                <button class="tab-btn" onclick="switchTab('listings')">My Listings</button>
+            </div>
+
+            <!-- Rentals Tab -->
+            <div class="tab-content active" id="rentals-tab">
+                <div class="dashboard-filters">
+                    <button class="filter-btn active" onclick="filterRentals('all')">All</button>
+                    <button class="filter-btn" onclick="filterRentals('upcoming')">Upcoming</button>
+                    <button class="filter-btn" onclick="filterRentals('active')">Active</button>
+                    <button class="filter-btn" onclick="filterRentals('completed')">Completed</button>
+                </div>
+
+                <div class="bookings-grid" id="rentals-grid">
+                    <!-- Rental cards will be loaded here -->
+                    <div class="empty-state">
+                        <div style="font-size: 64px; margin-bottom: 20px;">🚗</div>
+                        <h3>No rentals yet</h3>
+                        <p class="text-light">Start by browsing available vehicles</p>
+                        <a href="browse.html" class="btn btn-primary mt-3">Browse Vehicles</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listings Tab -->
+            <div class="tab-content" id="listings-tab">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🚗</div>
+                        <div>
+                            <h3 id="total-listings">0</h3>
+                            <p class="text-light">Total Listings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div>
+                            <h3 id="total-bookings">0</h3>
+                            <p class="text-light">Total Bookings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div>
+                            <h3 id="total-earnings">₹0</h3>
+                            <p class="text-light">Total Earnings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="mt-5">Your Vehicles</h3>
+                <div class="vehicles-grid" id="listings-grid">
+                    <!-- Vehicle listings will be loaded here -->
+                    <div class="empty-state">
+                        <div style="font-size: 64px; margin-bottom: 20px;">🏍️</div>
+                        <h3>No vehicles listed</h3>
+                        <p class="text-light">List your vehicle to start earning</p>
+                        <a href="list-vehicle.html" class="btn btn-primary mt-3">List Your Vehicle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Xpresso</h3>
+                    <p>Affordable vehicle rentals for students in Vadodara</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="browse.html">Browse Vehicles</a></li>
+                        <li><a href="list-vehicle.html">List Your Vehicle</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="policies.html">Terms & Conditions</a></li>
+                        <li><a href="policies.html">Privacy Policy</a></li>
+                        <li><a href="mailto:support@Xpresso.com">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Xpresso. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        let currentFilter = 'all';
+
+        // Check authentication
+        const user = Auth.getCurrentUser();
+        if (!user) {
+            window.location.href = 'login.html';
+        }
+
+        // Load user data
+        document.getElementById('user-name').textContent = user.name || 'User';
+
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tab + '-tab').classList.add('active');
+
+            if (tab === 'rentals') {
+                loadRentals();
+            } else {
+                loadListings();
+            }
+        }
+
+        function filterRentals(status) {
+            currentFilter = status;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            loadRentals();
+        }
+
+        function loadRentals() {
+            const grid = document.getElementById('rentals-grid');
+            let bookings = MockData.bookings.filter(b => b.renterId === user.id);
+
+            if (currentFilter !== 'all') {
+                bookings = bookings.filter(b => b.status === currentFilter);
+            }
+
+            if (bookings.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 64px; margin-bottom: 20px;">🚗</div>
+                        <h3>No ${currentFilter === 'all' ? '' : currentFilter} rentals</h3>
+                        <p class="text-light">Start by browsing available vehicles</p>
+                        <a href="browse.html" class="btn btn-primary mt-3">Browse Vehicles</a>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = bookings.map(booking => {
+                const vehicle = MockData.vehicles.find(v => v.id === booking.vehicleId);
+                if (!vehicle) return '';
+
+                const statusColors = {
+                    upcoming: 'primary',
+                    active: 'success',
+                    completed: 'secondary'
+                };
+
+                return `
+                    <div class="booking-card">
+                        <img src="${vehicle.images[0]}" alt="${vehicle.name}" class="booking-image">
+                        <div class="booking-info">
+                            <div class="booking-header">
+                                <h3>${vehicle.name}</h3>
+                                <span class="badge badge-${statusColors[booking.status]}">${booking.status}</span>
+                            </div>
+                            <p class="text-small text-light">📍 ${vehicle.location}</p>
+                            <div class="booking-details">
+                                <div class="booking-detail-item">
+                                    <span class="text-light">Pickup:</span>
+                                    <span>${new Date(booking.pickupTime).toLocaleString()}</span>
+                                </div>
+                                <div class="booking-detail-item">
+                                    <span class="text-light">Return:</span>
+                                    <span>${new Date(booking.returnTime).toLocaleString()}</span>
+                                </div>
+                                <div class="booking-detail-item">
+                                    <span class="text-light">Total Cost:</span>
+                                    <span><strong>₹${booking.totalCost}</strong></span>
+                                </div>
+                            </div>
+                            <a href="vehicle-details.html?id=${vehicle.id}" class="btn btn-secondary btn-sm mt-2">View Details</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function loadListings() {
+            const grid = document.getElementById('listings-grid');
+            const userVehicles = MockData.vehicles.filter(v => v.ownerId === user.id);
+
+            // Update stats
+            document.getElementById('total-listings').textContent = userVehicles.length;
+            document.getElementById('total-bookings').textContent = '0';
+            document.getElementById('total-earnings').textContent = '₹0';
+
+            if (userVehicles.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 64px; margin-bottom: 20px;">🏍️</div>
+                        <h3>No vehicles listed</h3>
+                        <p class="text-light">List your vehicle to start earning</p>
+                        <a href="list-vehicle.html" class="btn btn-primary mt-3">List Your Vehicle</a>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = userVehicles.map(vehicle => `
+                <div class="vehicle-card">
+                    <img src="${vehicle.images[0]}" alt="${vehicle.name}" class="vehicle-image">
+                    <div class="vehicle-info">
+                        <div class="vehicle-header">
+                            <h3 class="vehicle-name">${vehicle.name}</h3>
+                            <span class="badge ${vehicle.available ? 'badge-success' : 'badge-secondary'}">
+                                ${vehicle.available ? 'Available' : 'Rented'}
+                            </span>
+                        </div>
+                        <p class="text-small text-light">📍 ${vehicle.location}</p>
+                        <div class="vehicle-pricing">
+                            <div>
+                                <span class="vehicle-price">₹${vehicle.pricePerHour}</span>
+                                <span class="vehicle-price-unit">/hr</span>
+                            </div>
+                            <a href="vehicle-details.html?id=${vehicle.id}" class="btn btn-primary btn-sm">View</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function logout() {
+            Auth.logout();
+            Utils.showToast('Logged out successfully', 'success');
+            setTimeout(() => window.location.href = 'index.html', 1000);
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Initial load
+        loadRentals();
+    </script>
+</body>
+
+</html>
