@@ -88,44 +88,7 @@ ride/
 7. **Policies** - Complete policies and fine structure
 8. **Login/Signup** - Authentication pages
 
-## Design System
 
-### Colors
-- Primary Blue: #0D6EFD
-- Hero Blue: #0F4BFF
-- Navy Black: #000815
-- Success Green: #27AE60
-- Warning Yellow: #F8D775
-- Danger Red: #DC3545
-
-### Typography
-- Font: Inter, SF Pro Display, system fonts
-- H1: 48px (Bold)
-- H2: 36px (Semi-bold)
-- H3: 24px (Medium)
-- Body: 16px (Regular)
-
-### Spacing
-- 8px grid system
-- Border radius: 12-18px
-- Shadows: Soft, layered
-
-## Mock Data
-
-The application includes mock data for:
-- 6 sample vehicles (bikes and scooters)
-- 2 sample bookings
-- User profiles
-- Fine structure and policies
-
-## Authentication
-
-For demo purposes:
-- Any email/password combination will work for login
-- Signup creates a new user in LocalStorage
-- Verification is instant (in production, would require admin approval)
-
-## Features Implemented
 
 ✅ Complete design system
 ✅ Responsive navigation
@@ -171,4 +134,5 @@ For demo purposes:
 
 ---
 
-Built with ❤️ for students by students
+Built with ❤️ for students by student
+
